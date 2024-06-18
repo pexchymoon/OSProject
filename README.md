@@ -24,8 +24,13 @@ Team Mates:
 
 ***Questions:***
 
-1. What is the link of the fork OSProject in your repository. ***(1 mark)*** __https://github.com/mrcryxx/OSProject__.
-2. How many files and folders are in this repository. ***(1 mark)*** __1 file (README.md) and 1 folder (images)__.
+1. What is the link of the fork OSProject in your repository. ***(1 mark)***
+
+*** __https://github.com/mrcryxx/OSProject__.***
+
+2. How many files and folders are in this repository. ***(1 mark)***
+
+*** __1 file (README.md) and 1 folder (images)__.***
 
 
 ## Exploring github codespaces
@@ -57,9 +62,17 @@ Team Mates:
 
 ***Questions:***
 
-1. What is default OS used to run the virtual environment for codespaces. ***(1 mark)*** __Ubuntu Linux__.
-2. What are the two options of ram, disk and vcpu configuration you can have in running codespaces . ***(1 mark)*** __1st option is, 4 vCPUs, 8GB RAM, and 32GB disk. Second option is, 8 vCPUs, 16GB RAM, and 64GB disk__.
-3. Why must we commit and sync our current work on source control? ***(1 mark)*** __If you don't commit and sync, your work will be lost. It won't save your work on the main repository__.
+1. What is default OS used to run the virtual environment for codespaces. ***(1 mark)***
+
+*** __Ubuntu Linux__.***
+
+2. What are the two options of ram, disk and vcpu configuration you can have in running codespaces . ***(1 mark)***
+
+*** __1st option is, 4 vCPUs, 8GB RAM, and 32GB disk. Second option is, 8 vCPUs, 16GB RAM, and 64GB disk__.***
+
+3. Why must we commit and sync our current work on source control? ***(1 mark)*** 
+
+*** __If you don't commit and sync, your work will be lost. It won't save your work on the main repository__.***
 
 ## Exploring the Terminal
 
@@ -172,14 +185,29 @@ At the terminal, create a new directory called **myroot**, and run a instance of
 
 ***Questions:***
 
-1. Check the permission of the files created in myroot, what user and group is the files created in docker container on the host virtual machine? . ***(2 mark)*** __Fill answer here__.
+1. Check the permission of the files created in myroot, what user and group is the files created in docker container on the host virtual machine? . ***(2 mark)*** \
+*** __It is showing total 0 because there is no file currently present in myroot directory__.***
+```bash
+@mrcryxx ➜ /workspaces/OSProject/myroot (main) $ ls -l /workspaces/OSProject/myroot
+total 0
+```
 2. Can you change the permission of the files to user codespace.  You will need this to be able to commit and get points for this question. ***(2 mark)***
 ```bash
 //use sudo and chown
 sudo chown -R codespace:codespace myroot
 
 ```
-*** __Fill answer here__.***
+*** __Yes. You can change the permission__.***
+```bash
+@mrcryxx ➜ /workspaces/OSProject/myroot (main) $ sudo chown -R codespace:codespace /workspaces/OSProject/myroot
+@mrcryxx ➜ /workspaces/OSProject/myroot (main) $ ls -l /workspaces/OSProject/myroot
+total 0
+@mrcryxx ➜ /workspaces/OSProject/myroot (main) $ ls -la /workspaces/OSProject/myroot
+total 8
+drwxrwxrwx+ 2 codespace codespace 4096 Jun 15 13:36 .
+drwxrwxrwx+ 5 codespace root      4096 Jun 18 14:39 ..
+```
+*** __This indicates that the files are now owned by 'codespace' and have the permissions 'drwxrwxrwx+'__.***
 
 ## You are on your own, create your own static webpage
 
@@ -242,8 +270,54 @@ docker exec c1 ping c2
 ```
 ***Questions:***
 
-1. Are you able to ping? Show your output . ***(1 mark)*** __Fill answer here__.
-2. What is different from the previous ping in the section above? ***(1 mark)*** __Fill answer here__.
+1. Are you able to ping? Show your output . ***(1 mark)*** 
+
+__Yes. I am able to ping__.
+```bash
+@mrcryxx ➜ /workspaces/OSProject (main) $ docker network create bridgenet
+208eb76d81d836a86d862e6d132399f4fc50d8ab0c5e57f72c757b09ca9947f2
+@mrcryxx ➜ /workspaces/OSProject (main) $ docker network connect bridgenet c1
+@mrcryxx ➜ /workspaces/OSProject (main) $ docker network connect bridgenet c2
+@mrcryxx ➜ /workspaces/OSProject (main) $ docker exec c1 ping c2
+PING c2 (172.18.0.3): 56 data bytes
+64 bytes from 172.18.0.3: seq=0 ttl=64 time=0.120 ms
+64 bytes from 172.18.0.3: seq=1 ttl=64 time=0.088 ms
+64 bytes from 172.18.0.3: seq=2 ttl=64 time=0.083 ms
+64 bytes from 172.18.0.3: seq=3 ttl=64 time=0.085 ms
+64 bytes from 172.18.0.3: seq=4 ttl=64 time=0.077 ms
+64 bytes from 172.18.0.3: seq=5 ttl=64 time=0.084 ms
+64 bytes from 172.18.0.3: seq=6 ttl=64 time=0.084 ms
+64 bytes from 172.18.0.3: seq=7 ttl=64 time=0.078 ms
+64 bytes from 172.18.0.3: seq=8 ttl=64 time=0.080 ms
+64 bytes from 172.18.0.3: seq=9 ttl=64 time=0.087 ms
+64 bytes from 172.18.0.3: seq=10 ttl=64 time=0.076 ms
+64 bytes from 172.18.0.3: seq=11 ttl=64 time=0.076 ms
+64 bytes from 172.18.0.3: seq=12 ttl=64 time=0.074 ms
+64 bytes from 172.18.0.3: seq=13 ttl=64 time=0.070 ms
+64 bytes from 172.18.0.3: seq=14 ttl=64 time=0.077 ms
+64 bytes from 172.18.0.3: seq=15 ttl=64 time=0.061 ms
+64 bytes from 172.18.0.3: seq=16 ttl=64 time=0.097 ms
+64 bytes from 172.18.0.3: seq=17 ttl=64 time=0.076 ms
+64 bytes from 172.18.0.3: seq=18 ttl=64 time=0.088 ms
+64 bytes from 172.18.0.3: seq=19 ttl=64 time=0.070 ms
+64 bytes from 172.18.0.3: seq=20 ttl=64 time=0.063 ms
+64 bytes from 172.18.0.3: seq=21 ttl=64 time=0.071 ms
+64 bytes from 172.18.0.3: seq=22 ttl=64 time=0.079 ms
+64 bytes from 172.18.0.3: seq=23 ttl=64 time=0.069 ms
+64 bytes from 172.18.0.3: seq=24 ttl=64 time=0.118 ms
+64 bytes from 172.18.0.3: seq=25 ttl=64 time=0.083 ms
+64 bytes from 172.18.0.3: seq=26 ttl=64 time=0.117 ms
+64 bytes from 172.18.0.3: seq=27 ttl=64 time=0.071 ms
+64 bytes from 172.18.0.3: seq=28 ttl=64 time=0.109 ms
+64 bytes from 172.18.0.3: seq=29 ttl=64 time=0.086 ms
+64 bytes from 172.18.0.3: seq=30 ttl=64 time=0.086 ms
+64 bytes from 172.18.0.3: seq=31 ttl=64 time=0.075 ms
+64 bytes from 172.18.0.3: seq=32 ttl=64 time=0.107 ms
+...
+```
+2. What is different from the previous ping in the section above? ***(1 mark)*** 
+
+__The differences is in the previous ping, c1 and c2 on different networks. The latest ping, they already connected on the same network which is the bridgenet. When on the same network, they can communicate with each other unlike before__.
 
 ## Intermediate Level (10 marks bonus)
 
@@ -386,8 +460,14 @@ You have now set up a Node.js application in a Docker container on nodejsnet net
 
 ***Questions:***
 
-1. What is the output of step 5 above, explain the error? ***(1 mark)*** __Fill answer here__.
-2. Show the instruction needed to make this work. ***(1 mark)*** __Fill answer here__.
+1. What is the output of step 5 above, explain the error? ***(1 mark)***
+
+ __The output for step 5 is 'Server Error'. This is because node.js apps could not connect to mySQL due to an outdated authentication method used by the mySQL client (mysql)__.
+
+2. Show the instruction needed to make this work. ***(1 mark)*** 
+
+__To make this work, first install mysql2 by running npm install mysql2 in your project directory. Next, replace the 'require('mysql')' to 'require('mysql2')'. Then update the code and rebuild the docker image. Finally, run your Node.js application container__.
+
 
 
 
