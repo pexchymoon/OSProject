@@ -24,13 +24,13 @@ Team Mates:
 
 ***Questions:***
 
-1. What is the link of the fork OSProject in your repository. ***(1 mark)***
+1. What is the link of the fork OSProject in your repository. **(1 mark)**
 
-*** __https://github.com/mrcryxx/OSProject__.***
+ __https://github.com/mrcryxx/OSProject__.
 
 2. How many files and folders are in this repository. ***(1 mark)***
 
-*** __1 file (README.md) and 1 folder (images)__.***
+***__1 file (README.md) and 1 folder (images)__.***
 
 
 ## Exploring github codespaces
@@ -64,15 +64,15 @@ Team Mates:
 
 1. What is default OS used to run the virtual environment for codespaces. ***(1 mark)***
 
-*** __Ubuntu Linux__.***
+***__Ubuntu Linux__.***
 
 2. What are the two options of ram, disk and vcpu configuration you can have in running codespaces . ***(1 mark)***
 
-*** __1st option is, 4 vCPUs, 8GB RAM, and 32GB disk. Second option is, 8 vCPUs, 16GB RAM, and 64GB disk__.***
+***__1st option is, 4 vCPUs, 8GB RAM, and 32GB disk. Second option is, 8 vCPUs, 16GB RAM, and 64GB disk__.***
 
 3. Why must we commit and sync our current work on source control? ***(1 mark)*** 
 
-*** __If you don't commit and sync, your work will be lost. It won't save your work on the main repository__.***
+***__If you don't commit and sync, your work will be lost. It won't save your work on the main repository__.***
 
 ## Exploring the Terminal
 
@@ -635,8 +635,13 @@ f65be1987f84   debian    "bash"    19 minutes ago   Exited (137) 18 seconds ago 
 
 ***Questions:***
 
-1. Are files in the container persistent. Why not?. ***(1 mark)*** __Fill answer here__.
-2. Can we run two, or three instances of debian linux? . ***(1 mark)*** __Fill answer here__.
+1. Are files in the container persistent. Why not?. ***(1 mark)***
+
+__No because container are ephiremal. All of a container's data, including created files, is erased when a container is destroyed with docker rm.__
+
+2. Can we run two, or three instances of debian linux? . ***(1 mark)***
+
+__Yes, you can run multiple instances of Debian Linux. Docker allows you to construct and execute many containers based on the same or distinct images. Each container operates in its own isolated environment, allowing you to have multiple instances of Debian running at the same time.__.
 
 ## Running your own container with persistent storage
 
@@ -656,7 +661,7 @@ At the terminal, create a new directory called **myroot**, and run a instance of
 ***Questions:***
 
 1. Check the permission of the files created in myroot, what user and group is the files created in docker container on the host virtual machine? . ***(2 mark)*** \
-*** __It is showing total 0 because there is no file currently present in myroot directory__.***
+***__It is showing total 0 because there is no file currently present in myroot directory__.***
 ```bash
 @mrcryxx ➜ /workspaces/OSProject/myroot (main) $ ls -l /workspaces/OSProject/myroot
 total 0
@@ -667,7 +672,7 @@ total 0
 sudo chown -R codespace:codespace myroot
 
 ```
-*** __Yes. You can change the permission__.***
+***__Yes. You can change the permission__.***
 ```bash
 @mrcryxx ➜ /workspaces/OSProject/myroot (main) $ sudo chown -R codespace:codespace /workspaces/OSProject/myroot
 @mrcryxx ➜ /workspaces/OSProject/myroot (main) $ ls -l /workspaces/OSProject/myroot
@@ -677,7 +682,7 @@ total 8
 drwxrwxrwx+ 2 codespace codespace 4096 Jun 15 13:36 .
 drwxrwxrwx+ 5 codespace root      4096 Jun 18 14:39 ..
 ```
-*** __This indicates that the files are now owned by 'codespace' and have the permissions 'drwxrwxrwx+'__.***
+***__This indicates that the files are now owned by 'codespace' and have the permissions 'drwxrwxrwx+'__.***
 
 ## You are on your own, create your own static webpage
 
@@ -724,11 +729,30 @@ docker run -itd --net rednet --name c2 busybox sh
 ```
 ***Questions:***
 
-1. Describe what is busybox and what is command switch **--name** is for? . ***(2 mark)*** __Fill answer here__.
-2. Explore the network using the command ```docker network ls```, show the output of your terminal. ***(1 mark)*** __Fill answer here__.
-3. Using ```docker inspect c1``` and ```docker inspect c2``` inscpect the two network. What is the gateway of bluenet and rednet.? ***(1 mark)*** __Fill answer here__.
-4. What is the network address for the running container c1 and c2? ***(1 mark)*** __Fill answer here__.
-5. Using the command ```docker exec c1 ping c2```, which basically tries to do a ping from container c1 to c2. Are you able to ping? Show your output . ***(1 mark)*** __Fill answer here__.
+1. Describe what is busybox and what is command switch **--name** is for? . ***(2 mark)***
+
+__BusyBox is a lightweight software package that works in resource-constrained contexts such as Docker containers. Docker's --name switch assigns custom names to containers, making it easier to manage them within networks such as bluenet and rednet and increasing operational efficiency.__.
+
+2. Explore the network using the command ```docker network ls```, show the output of your terminal. ***(1 mark)***
+
+   __NETWORK ID     NAME      DRIVER    SCOPE
+1990939d3101   bluenet   bridge    local
+42ac9a299c6b   bridge    bridge    local
+5f5b9ee8c8bb   host      host      local
+472bf893d107   none      null      local
+b9473a1e1e6d   rednet    bridge    local__.
+   
+3. Using ```docker inspect c1``` and ```docker inspect c2``` inscpect the two network. What is the gateway of bluenet and rednet.? ***(1 mark)***
+   __C1 Bluenet Gateway: 172.18.0.1
+C2 Rednet Gateway: 172.19.0.1__.
+   
+4. What is the network address for the running container c1 and c2? ***(1 mark)***
+   __C1 Bluenet Network:172.18.0.2
+C2 Rednet Network:172.19.0.2__.
+   
+5. Using the command ```docker exec c1 ping c2```, which basically tries to do a ping from container c1 to c2. Are you able to ping? Show your output . ***(1 mark)***
+
+__No. ping: bad address 'c2' message will be shown, which indicated that Docker couldn't resolve c2's hostname in the network.__
 
 ## Bridging two SUB Networks
 1. Let's try this again by creating a network to bridge the two containers in the two subnetworks
